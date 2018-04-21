@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Camp Details</h2>
+
+<p>
+  <strong>Curriculum:</strong>
+  <%= @camp.curriculum.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @camp.curriculum.description %>
+</p>
+
+<!--<p>-->
+<!--  <strong>Location:</strong>-->
+<!--  <= @camp.location_id %>-->
+<!--</p>-->
+
+<p>
+  <strong>Location:</strong>
+  <%= @camp.location.name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= number_to_currency(@camp.cost) %>
+</p>
+
+<!--<p>-->
+<!--  <strong>Start date:</strong>-->
+<!--  <= @camp.start_date %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>End date:</strong>-->
+<!--  <= @camp.end_date %>-->
+<!--</p>-->
+
+<p><strong>Dates:</strong>
+  <%= @camp.start_date.strftime("%m/%d/%y") %> - <%= @camp.end_date.strftime("%m/%d/%y") %>
+</p>
+
+<p>
+  <strong>Camp Instructors:</strong>
+  <%= CampInstructor.where(camp_id: @camp.id).map{ |ci| ci.instructor.proper_name } %>
+</p>
+
+
+<p>
+  <strong>Time slot (type am or pm):</strong>
+  <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %>
+</p>
+
+<p>
+  <strong>Max students:</strong>
+  <%= @camp.max_students %>
+</p>
+
+<!--<p>-->
+<!--  <strong>Active:</strong>-->
+<!--  <= @camp.active %>-->
+<!--</p>-->
+
+<p>
+  <strong>Active:</strong>
+  <%= @camp.active ? "camp is currently active" : "camp is currently inactive." %>
+</p>
+
+<%= link_to 'Edit', edit_camp_path(@camp) %> |
+<%= link_to 'Back', camps_path %>

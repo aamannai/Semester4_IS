@@ -1,0 +1,64 @@
+<%= form_with(model: camp, local: true) do |form| %>
+  <% if camp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
+
+      <ul>
+      <% camp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :curriculum_id %>
+    <!--<= form.number_field :curriculum_id, id: :camp_curriculum_id %>-->
+    <%= form.select :curriculum_id, options_from_collection_for_select(Curriculum.all, 'id', 'name'),{}, id: 'camp_curriculum_id' %>     
+  </div>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <!--<= form.number_field :location_id, id: :camp_location_id %>-->
+    <%= form.select :location_id, options_from_collection_for_select(Location.all, 'id', 'name'),{}, id: 'camp_location_id' %>      
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.text_field :cost, id: :camp_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <!--<= form.date_select :start_date, id: :camp_start_date %>-->
+    <%= form.date_select(:start_date, prompt: true, id: 'camp_start_date') %>  
+    <!--select_date(my_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'})    -->
+    <!--<= form.date_select(:start_date, prompt: {day: 'Select day', month: 'Select month', year: 'Select year'}, id: 'camp_start_date') %>    -->
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <!--<= form.date_select :end_date, id: :camp_end_date %>-->
+    <%= form.date_select(:end_date, prompt: true, id: 'camp_end_date') %>    
+  </div>
+
+  <div class="field">
+    <%= form.label :time_slot %>
+    <%= form.text_field :time_slot, id: :camp_time_slot %>
+    <!--%= form.select :time_slot, options_for_select(['Morning', 'Afternoon']),{}, id: 'camp_time_slot' %>       -->
+  </div>
+
+  <div class="field">
+    <%= form.label :max_students %>
+    <%= form.number_field :max_students, id: :camp_max_students %>
+  </div>
+
+  <div class="field">
+    <%= form.label :active %>
+    <%= form.check_box :active, id: :camp_active %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

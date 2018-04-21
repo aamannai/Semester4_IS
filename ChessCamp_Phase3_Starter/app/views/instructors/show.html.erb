@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @instructor.proper_name %></h2>
+
+<p>
+  <strong>First name:</strong>
+  <%= @instructor.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @instructor.last_name %>
+</p>
+
+<p>
+  <strong>Upcoming Camps:</strong>
+  <%= Camp.upcoming %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @instructor.bio %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.email %>
+</p>
+
+<!--<p>-->
+<!--  <strong>Curriculum:</strong>-->
+  <!--<= CampInstructor.where(instructor_id: @camp.id).map{ |c| c.instructor } %>  -->
+<!--  <= Camp.where(instructor_id: @camp.id).map{ |c| c.instructor } %>-->
+<!--</p>-->
+
+<p>
+  <strong>Curriculum:</strong>
+  <%= @instructor.camps %>    
+</p>
+
+<!--<p>-->
+<!--  <strong>Curriculum:</strong>-->
+<!--  <= @instructor.Curriculum.name %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Curriculum:</strong>-->
+<!--  <= @instructor.Curriculum.name %>-->
+<!--</p>-->
+
+<p>
+  <strong>Phone:</strong>
+  <%= number_to_phone(@instructor.phone) %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @instructor.active %>
+</p>
+
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>
+
+<!--  <div class="col s7">-->
+<!--    <= render :partial => "partials/camps_list", locals: {camps: @upcoming_camps, state: "Upcoming"} %>-->
+<!--    <= render :partial => "partials/camps_list", locals: {camps: @past_camps, state: "Past"} unless @past_camps.empty? %>-->
+<!--  </div>-->
+<!--</div>-->
